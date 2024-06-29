@@ -5,6 +5,8 @@ import BedRoom from "../../assets/Bedroom.png"
 import DinningTable from "../../assets/DinningTable.png"
 import Sofa from "../../assets/Sofa.png"
 import Office from "../../assets/Office.png"
+import Footer from './components/Footer';
+
 
 const HomePage = () => {
 
@@ -193,6 +195,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
