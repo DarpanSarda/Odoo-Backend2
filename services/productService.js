@@ -33,15 +33,13 @@ const createProduct = async(reqData) =>{
     console.log(secondlevel)
     const product = new ProductModel({
         title:reqData.title,
-        color:reqData.color,
         description:reqData.description,
-        discountedPrice:reqData.discountedPrice,
-        discountpercent:reqData.discountpercent,
         quantity:reqData.quantity,
+        renter:reqData.renter,
         brand:reqData.brand,
         ImageUrl:reqData.ImageUrl,
         price:reqData.price,
-        sizes:reqData.size,
+        dimension:reqData.dimension,
         category:secondlevel._id,
     })
     // console.log(product)
@@ -71,7 +69,7 @@ const findProductById = async(productId)=>{
 }
 
 const getAllProducts=async (reqQuery)=>{
-    let{category,color,sizes,minPrice,maxPrice,minDiscount,sort,stock,pageNumber,pageSize}=reqQuery;
+    let{category,minPrice,maxPrice,sort,stock,pageNumber,pageSize}=reqQuery;
 
     pageSize= pageSize || 10;
 
@@ -89,28 +87,10 @@ const getAllProducts=async (reqQuery)=>{
         }
     }
 
-    if(color)
-    {
-        const colorset = new Set(color.split(",").map(color => color.trim().toLowerCase()))
-
-        const colorRegex = colorset.size>0?new RegExp([...colorset].join("|"),"i"):null;
-
-        query=query.where("color").regex(colorRegex);
-    }
-
-    if(sizes)
-    {
-        const sizesSet = new Set(sizes);
-        query=query.where("sizes.name").in([...sizes]);
-    }
 
     if(minPrice && maxPrice)
     {
         query=query.where('discountedPrice').gte(minPrice).lte(maxPrice);
-    }
-    if(minDiscount)
-    {
-        query=query.where('discountpercent').gt(minDiscount);
     }
     if(stock)
     {

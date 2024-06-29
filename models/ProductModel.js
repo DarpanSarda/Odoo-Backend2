@@ -1,53 +1,46 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = mongoose.Schema({
-    title:{
-        type:String,
-    },
-    description:{
+    name:{
         type:String,
     },
     price:{
         type:Number,
     },
-    discountedprice:{
-        type:Number
+
+    description:{
+        type:String,
     },
-    discountpercent:{
-        type:Number
+    
+    renter:{
+        type: String,
     },
-    quantity:{
-        type:Number
-    },
+
     brand:{
         type:String
     },
     color:{
         type:String
     },
-    sizes:[{
-        name:{
-            type:String,
-        },
-        quantity:{
-            type:Number,
-        }
-    }],
     ImageUrl:{
         type:String,
     },
-    ratings:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'ratings',
-    }],
-    reviews:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'reviews',
-    }],
-    numRatings:{
-        type:Number,
-        default:0
+    Dimensions:{
+        type: String,
     },
+    // ratings:[{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:'ratings',
+    // }],
+    // reviews:[{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:'reviews',
+    // }],
+    // numRatings:{
+    //     type:Number,
+    //     default:0
+    // },
+
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'categories'
@@ -58,5 +51,5 @@ const ProductSchema = mongoose.Schema({
     }
 })
 
-const ProductModel = mongoose.model('products',ProductSchema);
-module.exports=ProductModel;
+const ProductModel = mongoose.model("products",ProductSchema);
+module.exports = ProductModel;
