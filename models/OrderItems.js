@@ -6,9 +6,6 @@ const OrderItemsSchema = mongoose.Schema({
         ref:"products",
         required:true
     },
-    size:{
-        type:String,
-    },
     quantity:{
         type:Number,
         required:true
@@ -16,10 +13,6 @@ const OrderItemsSchema = mongoose.Schema({
     price:{
         type:Number,
         required:true
-    },
-    discountedPrice:{
-        type:Number,
-        // required:true,
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId,

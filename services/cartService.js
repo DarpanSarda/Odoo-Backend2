@@ -58,9 +58,7 @@ const addCartItem = async(userId,req)=>{
                 cart:cart._id,
                 quantity:1,
                 price:product.price,
-                size:req.size,
                 userId:userId,
-                discountedPrice:product.discountedPrice,
             })
 
             const createdcartItem = await cartItem.save();

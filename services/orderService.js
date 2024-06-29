@@ -93,7 +93,8 @@ const findOrderById = async (orderId) => {
     .populate("user")
     .populate({ path: "orderItems", populate: { path: "product" } })
     .populate("shippingAddress");
-
+  console.log("hello");
+  console.log(order)
   return order;
 };
 

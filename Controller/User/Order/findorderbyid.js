@@ -5,7 +5,7 @@ const findorderbyid = async(req,res)=>{
     try {
         let order = await orderService.findOrderById(req.params.id);
 
-        res.status(200).send(findorderbyid);
+        res.status(200).send(order);
     } catch (error) {
         return res.status(500).send({
             success:false,
